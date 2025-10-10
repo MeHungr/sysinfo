@@ -15,7 +15,7 @@ format="%-25s %s\n"
 # Thanks for making me relearn awk
 # I had fun with this
 hostname="$(hostname)"
-domain="$(hostname -d)"
+domain="$(hostname -d || echo "none")"
 defaultif="$(ip route | awk '/default/ { print $5 }')"
 ip="$(ip a show "$defaultif" | awk '/inet/ { print $2 }' | head -n 1 | cut -d'/' -f1)"
 gateway="$(ip route | awk '/default/ { print $3 }')"
